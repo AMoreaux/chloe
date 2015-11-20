@@ -1,0 +1,59 @@
+<script type="text/template" id="mail">
+	<% 
+		if(typeof(reload) == 'undefined') var classReload = 'mail';
+		else  var classReload = 'mail-reload';
+	%>
+	<div class="<%= classReload %> container page-mail">
+		<div class="mail-pop-in">
+			<div class="icon-pop-in">
+                <span class="close-mail ion-android-close "></span>
+			</div>
+			<h2 class="col-md-12 mail-title red">Contacter un client</h2>
+
+			<% if(typeof(dataFormMail) == 'undefined') var dataFormMail = ''; %>
+
+			<form action="#" class="form-pro-mail mail-form" id="form-pro-mail" enctype="multipart/form-data">
+	          <% for(var i in constructForms.formMail){ %>
+	              <% if( typeof(errorsMail) != "undefined" && typeof(errorsMail[i]) != "undefined" ) {
+	                var errorClass = 'focused-input-red';
+	                var errorMessage = 'data-toggle="tooltip" data-placement="top" title="'+errorsMail[i]+'"';
+	              } else { 
+	                var errorClass = '';
+	                var errorMessage = '';
+	              } %>
+	              <%
+	                if(constructForms.formMail[i].type == 'textarea') {
+	              %>
+	              <textarea <%= errorMessage %> class=" <%= errorClass %>" placeholder="<%= constructForms.formMail[i].name %>" id="<%=i%>-mail" name="<%=i%>"><%= dataFormMail[i] %></textarea>
+		          <%
+		      		}
+	                if(constructForms.formMail[i].type == 'text') {
+	              %>
+	              <input <%= errorMessage %> class=" <%= errorClass %>" placeholder="<%= constructForms.formMail[i].name %>" type="<%= constructForms.formMail[i].type %>" id="<%=i%>-mail" name="<%=i%>" value="<%= dataFormMail[i] %>">
+		          <%
+		      		}
+	                if(constructForms.formMail[i].type == 'select') {
+	              %>
+                    <select <%= errorMessage %> class="<%= errorClass %>" id="<%=i%>-mail" name="<%=i%>">
+                    <%if(constructForms.formMail[i].name == 'Nom du client'){%>
+                        <option value="" disabled selected><%= constructForms.formMail[i].name %></option>
+                    <% }%>
+                      <% for(var j in clients){ %>
+                        <option value="<%= clients[j].id %>"><%= clients[j].firstname %> <%= clients[j].lastname %></option> 
+                      <% } %>
+                    </select>
+	              <%
+	                }
+	            	%>
+	          <% } %>
+	          <div class="mail-button-container">
+				<a href="#" class="mail-button button send-mail">Envoyer le message</a>
+			</div>
+	        </form>
+
+
+
+			
+		</div>
+	</div>
+</script>

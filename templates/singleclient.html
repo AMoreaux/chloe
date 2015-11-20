@@ -1,0 +1,302 @@
+<script type="text/template" id="singleclient" xmlns="http://www.w3.org/1999/html">
+
+<!-- Contenu de la page clients -->
+	<span id="page-sc-top"></span>
+	<div class="main-content single-client">
+		<header class="global-data-client" style="background-image: url('assets/img/pool-test.jpg');">
+			<div class="bg-blue">
+				<div class="row">
+					<p class="col-md-11">Météo actuelle :</span><span id="weather"></span><span id="iconWeather"></span></p>
+					<span class="col-md-1 close-single-client"><span>&#xf2d7;</span></span>
+				</div> 
+				<div class="col-md-12 info-single-client">
+					<p><%= data.firstname %> <%= data.lastname %></p>
+					<small><%= data.ownUser[0].address %>,</small>
+					<small><%= data.ownUser[0].code_postal %> <%= data.ownUser[0].city %></small>
+				</div>
+				<div class="row action-c-s">
+					<div class="col-md-12">
+						<a href="#ancre" class="button button-mail-cs" id="count">aperçu de la piscine</a>
+						<a href="#" class="button send button-mail-cs">Envoyer un message</a>
+					</div>
+					<div><a href="#" class="button-edit">éditer ce profil</a></div>
+				</div>
+			</div>
+		</header>
+		<section class="data-client">
+			<section class="data-pool-client ">
+				<h2 id="ancre">Données de la piscine</h2>
+				<div class="row alertAlgue" id="alertAlgue">
+					<div class="col-md-12 alert-client">
+						<span class="ion-alert-circled"></span>
+						<span><span class="bold">Attention !</span> Un risque d'algues est présent pour cette piscine. Contrôlez régulièrement les indicateurs "<span class="bold">ph</span>" et "<span class="bold">Température de l'eau</span>".</span>
+					</div>
+				</div>
+
+				<div class="row wrap-data card-unselected">
+					<div class="col-md-4">
+						<div class="card-alert alert" id="alertChlore">
+							<span>Alerte !</span>
+						</div>
+                        <div class="flip-container card-chlore">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="card-data">
+                                    	<header>
+                                    		<div class="card-data-header">
+	                                            <h4 class="graphType card-selected" data-type="chlore">Chlore</h4>
+	                                            <span class="ion-ios-information-outline flip-card" data-target="card-chlore"></span>
+                                            </div>
+                                    	</header>
+                                        <div class="graphType card-selected" data-type="chlore">
+                                            <p><%= data.ownChlore[0].value %></p>
+                                            <small>mg/L</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="back">
+                                        <div class="card-data">
+                                            <header>
+                                                <h4 class="graphType"  data-type="chlore">Chlore</h4>
+                                                <span class="ion-android-close flip-card" data-target="card-chlore"></span>
+                                            </header>
+                                            <div class="card-click graphType" data-type="chlore">
+                                                <small class="">Le Chlore permet la désinfection de l’eau de votre bassin, un taux de chlore incorrect va influencer le PH de l’eau, la désinfection ne se fera pas correctement et l’eau deviendra trouble.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                    	<div class="card-alert alert" id="alertPh">
+							<span>Alerte !</span>
+						</div>
+                        <div class="flip-container card-ph" >
+                            <div class="flipper">
+                                <div class="front">
+                                    <div class="card-data">
+                                        <header>
+                                        	<div class="card-data-header">
+	                                            <h4 class="graphType ajax-call" data-type="ph">PH de l'eau</h4>
+	                                            <span class="ion-ios-information-outline flip-card" data-target="card-ph"></span>
+                                            </div>
+                                        </header>
+                                        <div class="graphType ajax-call" data-type="ph" >
+                                            <p><%= data.ownPh[0].value %></p>
+                                            <small>neutre</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back">
+                                    <div class="card-data">
+                                        <header>
+                                            <h4 class="graphType ajax-call" data-type="ph">PH de l'eau</h4>
+                                            <span class="ion-android-close flip-card" data-target="card-ph"></span>
+                                        </header>
+                                        <div class="card-click graphType ajax-call" data-type="ph" >
+                                            <small class="">Le ph est un indicateur de la qualité de votre eau, il représente l’acidité de l’eau. Ainsi un PH mal adapté peut favoriser le développement des algues, provoquer une coloration de l’eau et accélérer la détérioration du matériel.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-md-4 ">
+                        <div class="card-alert alert">
+                            <span>Alerte !</span>
+                        </div>
+                        <div class="flip-container card-degrees">
+                            <div class="flipper">
+                                <div class="back">
+                                    <div class="card-data">
+                                        <header>
+                                            <h4 class="graphType ajax-call"  data-type="temperature">Température de l'eau</h4>
+                                           <span class="ion-android-close flip-card" data-target="card-degrees"></span>
+                                        </header>
+                                        <div class="card-click graphType ajax-call"  data-type="temperature">
+                                            <small class="">La température de l’eau a une grande influence sur le développement des bactéries, ainsi une eau plus chaude facilite la prolifération de ces dernières.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="front">
+                                    <div class="card-data">
+                                        <header>
+                                        	<div class="card-data-header">
+	                                            <h4 class="graphType ajax-call" data-type="temperature">Température de l'eau</h4>
+	                                            <span class="ion-ios-information-outline flip-card" data-target="card-degrees"></span>
+                                            </div>
+                                        </header>
+                                        <div class="graphType ajax-call" data-type="temperature">
+                                            <p><%= data.ownTemperature[0].value %></p>
+                                            <small>Degrés</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </section>
+				<div class="head-charts row">
+					<h3 class="col-md-6" id="nameData"></h3>
+					<ul class="col-md-6 filtre-user-pro-full">
+						<li><p class="graphTime ajax-call"  id="2" data-id="2">jour</p></li>
+						<li><p class="graphTime ajax-call" id="7" data-id="7">semaine</p></li>
+						<li><p class="graphTime filtre-selected ajax-call"  id="30" data-id="30">mois</p></li>
+						<li><p class="graphTime ajax-call"  id="365" data-id="365">année</p></li>
+					</ul>
+				</div>
+            <div id="blocChart"><canvas width="1980" height="846" id="myChart"></canvas></div>
+			</section>
+			<section class="equipments">
+				<h2>Les équipements de la piscine</h2>
+				<div class="row equipments-cards">
+					<div class="col-md-4">
+						<div class="flip-container card-filter">
+                            <div class="flipper">
+								<div class="front data-spec">
+									<div class="card-data spec">
+										<header>
+											<div class="card-data-header">
+												<h4>Filtre</h4>
+												<span class="ion-ios-information-outline flip-card" data-target="card-filter"><a href="#"></a></span>
+											</div>
+										</header>
+										<div>
+											<img class="img-materiel" src="assets/img/Filter-vector.png"alt="filtre">
+											<ul>
+												<li><small>Marque :</small> <%= data.ownSwimmingpool[0].filter.brand %></li>
+												<li><small>Modèle :</small> <%= data.ownSwimmingpool[0].filter.model %></li>
+												<li><small>Référence :</small> <%= data.ownSwimmingpool[0].filter.reference %></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="back data-spec">
+									<div class="card-data spec">
+										<header>
+											<h4>Filtre</h4>
+											<span class="ion-android-close flip-card" data-target="card-filter"><a href="#"></a></span>
+										</header>
+										<div>
+		                                    <small class="">Le filtre va nettoyer la plus grande partie des impuretés, il doit être entretenu régulièrement selon la nature de ce dernier. Les filtres peuvent être de différents types.</small>
+		                                </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="flip-container card-skimmer">
+                            <div class="flipper">
+								<div class="front data-spec">
+									<div class="card-data spec">
+										<header>
+											<div class="card-data-header">
+												<h4>Skimmer</h4>
+												<span class="ion-ios-information-outline flip-card" data-target="card-skimmer"><a href="#"></a></span>
+											</div>
+										</header>
+										<div>
+											<img class="img-materiel" src="assets/img/Skimmer-vector.png"alt="filtre">
+											<ul>
+												<li><small>Marque :</small> <%= data.ownSwimmingpool[0].skimmer.brand %></li>
+												<li><small>Modèle :</small> <%= data.ownSwimmingpool[0].skimmer.model %></li>
+												<li><small>Référence :</small> <%= data.ownSwimmingpool[0].skimmer.reference %></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="back data-spec">
+									<div class="card-data spec">
+										<header>
+											<h4>Skimmer</h4>
+											<span class="ion-android-close flip-card" data-target="card-skimmer"><a href="#"></a></span>
+										</header>
+										<div>
+		                                    <small class="">Le skimmer est un dispositif qui va aspirer les plus grosses impuretés se trouvant dans le bassin tel que des feuilles, des insectes ou autres éléments se trouvant à la surface de l’eau.</small>
+		                                </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="flip-container card-pump">
+                            <div class="flipper">
+								<div class="front data-spec">
+									<div class="card-data spec">
+										<header>
+											<div class="card-data-header">
+												<h4>Pompe</h4>
+												<span class="ion-ios-information-outline flip-card" data-target="card-pump"><a href="#"></a></span>
+											</div>
+										</header>
+										<div>
+											<img class="img-materiel" src="assets/img/Pump-vector.png"alt="filtre">
+											<ul>
+												<li><small>Marque :</small> <%= data.ownSwimmingpool[0].pump.brand %></li>
+												<li><small>Modèle :</small> <%= data.ownSwimmingpool[0].pump.model %></li>
+												<li><small>Référence :</small> <%= data.ownSwimmingpool[0].pump.reference %></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="back data-spec">
+									<div class="card-data spec">
+										<header>
+											<h4>Pompe</h4>
+											<span class="ion-android-close flip-card" data-target="card-pump"><a href="#"></a></span>
+										</header>
+										<div>
+		                                    <small class="">La pompe à filtration est l’élément moteur du système de purification de l’eau de votre bassin, il est important de choisir une pompe adaptée au besoin de votre piscine.</small>
+		                                </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="informations">
+				<h2>Informations du client</h2>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="informations-user">
+							<p class=""><%= data.firstname %> <%= data.lastname %></p>
+							<p><%= data.ownUser[0].address %></p>
+							<p><%= data.ownUser[0].code_postal %> <%= data.ownUser[0].city %></p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="informations-user">
+							<p>Piscine : <%= data.ownSwimmingpool[0].water_volume %> m³</p>
+							<p>Construite en 2008</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="informations-user">
+							<div>
+								<span class="ion-android-phone-portrait"></span>
+								<p><%= data.ownUser[0].tel %></p>
+							</div>
+							<div>
+								<span class="ion-android-mail"></span>
+								<p><%= data.ownUser[0].mail %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mail-button-container">
+					<a href="#" class="mail-button send button">Envoyer un message</a>
+				</div>
+			</section>
+		</section>
+		<div id="map"></div>
+	</div>
+
+</script>

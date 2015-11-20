@@ -1,0 +1,96 @@
+  <script type="text/template" id="register">
+    <div class="main-content register" id="addclient">
+        <nav class="row menu-main menu-pad">
+        <div class="logo col-md-2">
+           <a href="#"><img src="assets/svg/logo.svg"></a>
+        </div>
+        <div class="logo col-md-10">
+          <ul class="menu-right">
+            <li>
+              <a href="#register" class="nav-btn-full">M'inscrire</a>
+            </li>
+            <li>
+              <a href="#login" class="nav-btn-grey nav-btn-full">Me connecter</a>
+            </li>
+          </ul>   
+        </div>
+      </nav>
+        <% if(typeof(dataFormRegister) == 'undefined') var dataFormRegister = ''; %>
+
+        <form action="#" class="dropzone form-pro-register" id="form-pro-register" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-4 shadow-white-left-reg"></div>
+            <div class="col-md-8 first-cmd9">
+              <h2>Inscrivez-vous !</h2>
+            </div>
+          </div>
+
+          <% for(var i in constructForms.formRegister){ %>
+            
+              <% 
+               if(typeof(errorsRegister) != "undefined" && typeof(errorsRegister[i]) != "undefined") { 
+                var errorClass = 'focused-input-red';
+                var errorMessage = 'data-toggle="tooltip" data-placement="top" title="'+errorsRegister[i]+'"';
+                } 
+                else { 
+                  var errorClass = '';
+                  var errorMessage = '';
+                } 
+              %>
+
+              <% 
+               if(constructForms.formRegister[i].type == 'separator' ) { 
+              %>
+
+                </section>
+
+                <div class="row">
+                  <div class="col-md-4 shadow-white-left add-form-col-3"></div>
+                  <div class="col-md-8 first-cmd9">
+                    <h3><%= constructForms.formRegister[i].name %></h3>
+                  </div>
+                </div>
+                <section>
+              <%
+                } 
+                if(constructForms.formRegister[i].type == 'text' || constructForms.formRegister[i].type == 'password' || constructForms.formRegister[i].type == 'number' || constructForms.formRegister[i].type == 'email') { 
+              %>
+                <div class="row">
+                  <div class="col-md-4 add-form-col-3">
+                    <label for="<%=i%>-register"><%= constructForms.formRegister[i].name %> <span class="red">*</span></label>
+                  </div>
+                  <div class="col-md-8">
+                    <input <%= errorMessage %> class="<%= errorClass %>" name="<%=i%>" placeholder="<%= constructForms.formRegister[i].name %>" type="<%= constructForms.formRegister[i].type %>" id="<%=i%>-register" name="<%=i%>" value="<%= dataFormRegister[i] %>">
+                  </div>
+                </div>
+              <%
+              } 
+                if(constructForms.formRegister[i].type == 'file') {
+              %>
+<!--                 <div class="row">
+                  <div class="col-md-4">
+                    <label for="<%=i%>-register"><%= constructForms.formRegister[i].name %></label>
+                  </div>
+                  <div class="col-md-8 dz-md-8">
+                    <div class="dz-clickable dropzone-previews filesZone <%= errorClass %>">
+                      <span class="ion-upload"></span>
+                      <p>Cliquez ou déposez votre photo ici</p>
+                    </div>
+                  </div>
+                </div> -->
+              <%
+                } 
+              }
+            %>
+            </section>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-8">
+                <button class="btn-register">M'inscrire</button>
+              </div>
+            </div>
+          </form>
+
+    </div>
+  </script>
+

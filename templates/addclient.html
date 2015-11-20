@@ -1,0 +1,104 @@
+  <script type="text/template" id="addclient">
+    <div class="main-content" id="addclient">
+
+
+        <% if(typeof(dataFormAdd) == 'undefined') var dataFormAdd = ''; %>
+
+        <form action="#" class="dropzone form-pro-add" id="form-pro-add">
+            <div class="row">
+              <div class="col-md-4 shadow-white-left add-form-col-3"></div>
+              <div class="col-md-8 first-cmd9">
+                <h2>Ajouter un client</h2>
+              </div>
+            </div>
+
+            <% for(var i in constructForms.formAdd){ %>
+            
+              <% 
+               if(typeof(errorsAdd) != "undefined" && typeof(errorsAdd[i]) != "undefined") { 
+                var errorClass = 'focused-input-red';
+                var errorMessage = 'data-toggle="tooltip" data-placement="top" title="'+errorsAdd[i]+'"';
+                } 
+                else { 
+                  var errorClass = '';
+                  var errorMessage = '';
+                } 
+              %>
+
+              <% 
+               if(constructForms.formAdd[i].type == 'separator' ) { 
+              %>
+
+                </section>
+
+                <div class="row">
+                  <div class="col-md-4 shadow-white-left add-form-col-3"></div>
+                  <div class="col-md-8 first-cmd9">
+                    <h3><%= constructForms.formAdd[i].name %></h3>
+                  </div>
+                </div>
+                <section>
+              <%
+                } 
+                if(constructForms.formAdd[i].type == 'text' || constructForms.formAdd[i].type == 'number' || constructForms.formAdd[i].type == 'email') { 
+              %>
+                <div class="row">
+                  <div class="col-md-4 add-form-col-3">
+                    <label for="<%=i%>-add"><%= constructForms.formAdd[i].name %> <span class="red">*</span></label>
+                  </div>
+                  <div class="col-md-8">
+                    <input <%= errorMessage %> class="<%= errorClass %>" name="<%=i%>" placeholder="<%= constructForms.formAdd[i].placeholder %>" type="<%= constructForms.formAdd[i].type %>" id="<%=i%>-add" name="<%=i%>" value="<%= dataFormAdd[i] %>">
+                  </div>
+                </div>
+              <%
+              } 
+                if(constructForms.formAdd[i].type == 'file') {
+              %>
+<!--                 <div class="row">
+                  <div class="col-md-4">
+                    <label for="<%=i%>-add"><%= constructForms.formAdd[i].name %></label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="dz-clickable dropzone-previews filesZone <%= errorClass %>">
+                      <span class="ion-upload"></span>
+                      <p>Cliquez ou déposez votre photo ici</p>
+                    </div>
+                  </div>
+                </div> -->
+              <%
+                } 
+                if(constructForms.formAdd[i].type == 'select') {
+                  if(i == 'skimmerId') var list = dataCreation.skimmer;
+                  if(i == 'pumpId') var list = dataCreation.pump;
+                  if(i == 'filterId') var list = dataCreation.filter;
+              %>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="<%=i%>-add"><%= constructForms.formAdd[i].name %></label>
+                  </div>
+                  <div class="col-md-8">
+                    <select <%= errorMessage %> class="<%= errorClass %>" id="<%=i%>-add" name="<%=i%>">
+                      <option value="" disabled selected><%= constructForms.formAdd[i].placeholder %></option>
+                      <% for(var j in list){ %>
+                        <option value="<%= list[j].id %>"><%= list[j].model %></option> 
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+              <%
+                }
+              }
+            %>
+            </section>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-8">
+                <button class="">Ajouter ce client</button>
+              </div>
+            </div>
+          </form>
+              
+
+    </div>
+  </script>
+

@@ -1,0 +1,53 @@
+<script type="text/template" id="nav">
+  	<nav class="row menu-main">
+	  	<div class="logo col-xs-12 col-sm-2 col-sm-push-5">
+            <img src="assets/svg/logo.svg">
+	  	</div>
+	  	<div class="menu-left col-xs-6 col-sm-5 col-sm-pull-2">
+	  		<ul>
+	  			<li><a href="#" class="button-home visible-md"></a></li>
+	  			<li><a href="#clients">Mes clients</a></li>
+	  			<li><a href="#add-client">Ajouter un client</a></li>
+	  		</ul>
+	  	</div>
+
+	  	<div class="menu-right col-xs-6 col-sm-5">
+		  	<ul>
+		  		<li><a href="#" data-target="page-mail" class="menu-button button-mail"></a></li>
+		  		<li><a href="#" data-target="page-search" class="menu-button button-search"></a></li>
+		  		<li class="menu-user">
+		  			<a href="#" class="display-drop-down" data-target="menu-user-drop-down">
+		  				<span class="fleche">&#xe688;</span>
+		  				<figure class="circle">
+                            <% if(!dataUser.userpro.logo){ %>
+                            <!-- prod : <img src="../assets/img/profilDefault.jpg" alt="Logo">
+                                 devAntoine : <img src="../app/assets/img/profilDefault.jpg" alt="Logo">-->
+                                <img src="../assets/img/profilDefault.jpg" alt="Logo">
+                            <% }else{ %>
+                                <img src="http://api.mychloe.io/userpro/load/logo/<%= dataUser.token %>" alt="Logo">
+                            <% } %>
+                        </figure>
+		  			</a>
+		  		</li>
+		  	</ul>
+	  	</div>
+	</nav>
+	<ul class="menu-user-drop-down">
+		<li>
+			<p class="name-drop-down-menu"><%= dataUser.userpro.name %></p>
+		</li>
+		<li>
+		<span class="ion-gear-a"></span>
+		<a href="#settings">
+			Réglages du profil
+		</a>
+		</li>
+		<li>
+		<span class="ion-power"></span>
+		<a href="#logout">
+			Me déconnecter
+		</a>
+		</li>
+	</ul>
+
+  </script>

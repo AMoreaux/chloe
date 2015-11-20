@@ -1,0 +1,30 @@
+{ 	
+	"title":"errorStrings",
+    "bad_credentials":"Identifiants incorrects",
+    "fill_address":"Vous devez spécifier une adresse",
+    "fill_codePostal":"Vous devez sépcifier un code postal",
+    "fill_city":"Vous devez spécifier une ville",
+    "fill_name":"Vous devez spécifier un nom pour l'entreprise",
+    "fill_mail":"Vous devez spécifier une adresse e-mail",
+    "fill_password":"Vous devez spécifier un mot de passe",
+    "fill_retype_password":"Vous devez retaper votre mot de passe",
+    "fill_siren":"Vous devez spécifier un numéro Siren",
+    "fill_tel":"Vous devez spécifier un numéro de téléphone",
+    "password_same":"Les deux mots de passe ne sont pas identiques",
+    "password_length_min":"Votre mot de passe doit comporter au moins 3 caratères",
+    "password_length_max":"Votre mot de passe doit comporter moins de 30 caractères",
+    "mail_not_valid":"Votre adresse e-mail n'est pas valide",
+    "mail_already_used":"L'adresse e-mail est déjà utilisée",
+    "fill_firstname":"Vous devez spécifier un prénom",
+    "fill_lastname":"Vous devez spécifier un nom",
+    "fill_waterVolume":"Vous devez spécifier le volume de la piscine",
+    "fill_constructDate":"Vous devez spécifier une date de construction",
+    "fill_skimmerId":"Vous devez spécifier un skimmer",
+    "fill_pumpId":"Vous devez spécifier une pompe",
+    "fill_filterId":"Vous devez spécifier un filtre",
+    "fill_subject":"Vous devez remplir le sujet",
+    "fill_message":"Vous devez remplir le message",
+    "fill_idUserClient":"Vous devez sélectionner un client"
+
+
+}

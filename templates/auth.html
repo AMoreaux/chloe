@@ -1,0 +1,47 @@
+  <script type="text/template" id="auth">
+    <div class="main-content">
+        <nav class="row menu-main menu-pad">
+        <div class="logo col-md-2">
+           <a href="#"><img src="assets/svg/logo.svg"></a>
+        </div>
+        <div class="logo col-md-10">
+          <ul class="menu-right">
+            <li>
+              <a href="#register" class="nav-btn-full">M'inscrire</a>
+            </li>
+            <li>
+              <a href="#login" class="nav-btn-grey nav-btn-full">Me connecter</a>
+            </li>
+          </ul>   
+        </div>
+      </nav>
+        <% if(typeof(dataFormAuth) == 'undefined') var dataFormAuth = ''; %>
+
+              <div class="wrap-global-conect">
+              <h2>Connexion à votre profil</h2>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card-data-connect">
+                      <section>
+                      <form action="#" class="form-pro-connect" id="form-pro-connect" enctype="multipart/form-data">
+                          <% for(var i in constructForms.formAuth){ %>
+                            <div>
+                              <label for="<%=i%>-register"><%= constructForms.formAuth[i].name %></label>
+                              <input class="" placeholder="<%= constructForms.formAuth[i].name %>" type="<%= constructForms.formAuth[i].type %>" id="<%=i%>-connect" name="<%=i%>" value="<%= dataFormAuth[i] %>">
+                            </div>
+                          <% } %>
+                          <div class="btn-connect">
+                              <button role="submit" class="btn-full">Enregistrer</button>
+                          </div>
+                        </form>
+                      </section>
+                    </div>
+                  </div>
+                </div>
+             </div>
+        </div>
+
+
+  </script>
+
+

@@ -1,0 +1,62 @@
+<script type="text/template" id="settings">
+    <div class="main-content">
+    	<div class="settings-page">
+    	<h2>Réglage de votre profil</h2>
+		    <div class="row">
+		    	<div class="col-md-6 card-data edit-left">
+		    		<div class="profil-pic" style="background-image: url('assets/img/mugShot.jpg');">
+						<div class="profil-pic-link-container">
+							<span class="ion-edit"></span>
+						</div>
+					</div>
+		    		<p>Utilisateur</p>
+		    		<input class="" name=""type="text" value="Utilisateur">
+		    		<button class="">Éditer mon profil</button>
+		    	</div>
+		    	<div class="col-md-6">
+		    		<div class="card-data cd-mdp">
+			    		<h3>Changer mon mot de passe</h3>
+			    		<section>
+			    			<% if(typeof(dataFormPassword) == 'undefined') var dataFormPassword = ''; %>
+
+				    		<form action="#" class="form-password-settings" id="form-password-settings" enctype="multipart/form-data">
+					    		<% for(var i in constructForms.formPassword){ %>
+					    			<% 
+						               if(typeof(errorsPassword) != "undefined" && typeof(errorsPassword[i]) != "undefined") { 
+						                var errorClass = 'focused-input-red';
+						                var errorMessage = 'data-toggle="tooltip" data-placement="top" title="'+errorsPassword[i]+'"';
+						                } 
+						                else { 
+						                  var errorClass = '';
+						                  var errorMessage = '';
+						                } 
+						              %>
+		                            <div>
+		                              <label for="<%=i%>-password"><%= constructForms.formPassword[i].name %></label>
+		                              <input <%= errorMessage %> class="<%= errorClass %>" placeholder="<%= constructForms.formPassword[i].name %>" type="<%= constructForms.formPassword[i].type %>" id="<%=i%>-password" name="<%=i%>" value="<%= dataFormPassword[i] %>">
+		                            </div>
+		                          <% } %>
+					    		<div class="btn-settings-password">
+					    			<button role="submit" class="btn-full">Enregistrer</button>
+					    		</div>
+					    	</form>
+				    	</section>
+
+				    </div>
+			    		<div class="card-data cd-mdp cd-2">
+			    	    	<h3>Changer mon email</h3>
+			    	    	<section>
+			    	    		<div>
+			    		    		<label>Mon email</label>
+			    		    		<input class="" name="" placeholder="Votre nouvel email" type="mail">
+			    				</div>
+			    	    		<div class="btn-setting">
+			    	    			<button class="btn-full">Enregistrer</button>
+			    	    		</div>
+			    	    	</section>
+			    	    </div>
+		    	</div>
+		    </div>
+		 </div>
+    </div>
+</script>
