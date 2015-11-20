@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Chloé App
 
 Chloé est un outil qui permet de monitorer la qualité de l’eau d’une piscine.
@@ -21,6 +20,3 @@ npm install gulp -g
 ```sh
 bower install
 ```
-=======
-# chloe
->>>>>>> c0c1b8ce1e3d0e981934681f5a277b2e5aa3061d
