@@ -1,0 +1,84 @@
+{
+  "repository": "@specifyapp/r",
+  "head": "specify",
+  "base": "master",
+  "rules": [
+    {
+      "name": "Design Tokens / Generate theme",
+      "path": "./output/theme.ts",
+      "filter": {
+        "types": [
+          "vector",
+          "color",
+          "font",
+          "textStyle"
+        ]
+      },
+      "parsers": [
+        {
+          "name": "to-react-native",
+          "options": {
+            "colorFormat": "hex",
+            "assetsFolderPath": {
+              "vector": "assets/vector"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assets / Export vectors",
+      "path": "./output/assets/vectors",
+      "filter": {
+        "types": [
+          "vector"
+        ]
+      },
+      "parsers": [
+        {
+          "name": "camelcasify"
+        },
+        {
+          "name": "svgo",
+          "options": {
+            "svgo": {
+              "js2svg": {
+                "pretty": true
+              },
+              "plugins": [
+                {
+                  "removeDimensions": true
+                },
+                {
+                  "convertColors": {
+                    "currentColor": true
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Assets / Export fonts",
+      "path": "./output/assets/fonts",
+      "filter": {
+        "types": [
+          "font"
+        ]
+      },
+      "parsers": [
+        {
+          "name": "convert-font",
+          "options": {
+            "formats": [
+              "woff2",
+              "woff"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
